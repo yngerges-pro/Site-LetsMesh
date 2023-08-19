@@ -8,10 +8,12 @@ import {
   Chip,
 } from "@mui/material";
 
+import ProfileNamePronouns from "./profile-name-text";
 import ProfileTextField from "./profile-textfield";
 import ProfilePicture from "./profile-picture";
 import { Profile } from "./types/profile";
 import "./styling/profile-page.css";
+
 
 const theme = createTheme({
   palette: {
@@ -45,9 +47,14 @@ const theme = createTheme({
  */
 const ProfilePage = (props: Profile) => {
   return (
+    
     <Box className="profile-page-container">
       <Box className="profile-page-header">
-        <ProfileHeader name={props.name} pronouns={props.pronouns} />
+        {/* <ProfileHeader name={props.name} pronouns={props.pronouns} /> */}
+        
+        <ProfileN profileName={props.name} />
+        <ProfilePro profilepronoun={props.pronouns} />
+      
       </Box>
       <Grid container sx={{ borderBottom: 1, borderColor: "#d9d9d9" }}>
         <Grid
@@ -148,6 +155,60 @@ const ProfileHeader = (props: { name: string; pronouns: string }) => {
     </ThemeProvider>
   );
 };
+/*
+  * Profile and Pronouns
+*/
+const ProfileN = (props: {
+  profileName: string;
+}) => {
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
+        <Grid container alignItems="flex-end">
+          <Box
+            sx={{
+              maxWidth: "1000px",
+              wordBreak: "break-word",
+            }}
+          >
+       <Typography
+              variant="h1"
+              sx={{
+                bottom: "50px",
+                display: "inline",
+                fontSize: "60px",
+              }}
+            >
+      <ProfileNamePronouns  /**Profile-name-text.tsx */
+        label={"Profile Name"}
+        placeholder={"Your Name"}
+        text={props.profileName}
+        charLimit={15}
+      />
+      </Typography>
+      </Box>
+      </Grid>
+      </Box>
+    </ThemeProvider>
+  )
+}
+
+const ProfilePro= (props: {
+  profilepronoun: string;
+}) => {
+  
+  return (
+    <ThemeProvider theme={theme}>
+      <ProfileNamePronouns /**Profile-name-tezt.tsx */
+        label={"Profile Pronoun}"}
+        placeholder={"Your Pronoun"}
+        text={props.profilepronoun}
+        charLimit={7}
+      />
+    </ThemeProvider>
+  )
+}
 
 /**
  * Displays the user's current occupation.
