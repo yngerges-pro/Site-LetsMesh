@@ -5,7 +5,23 @@ import EditIcon from "@mui/icons-material/Edit";
 import SaveIcon from "@mui/icons-material/Save";
 
 // New Imports
-import { Typography, Grid, createTheme} from "@mui/material";
+import { Typography, Grid, createTheme, ThemeProvider} from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    mode: "light",
+    primary: {
+      main: "#0b7d66",
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: "cocogoose",
+      fontWeight: "bold",
+      color: "#26383A",
+    },
+  },
+});
 
 /**
  * A React component that renders a text field with editing capabilities.
@@ -44,55 +60,33 @@ const ProfileTextField = (props: {
 
   return (
 
-    //
-    <TextField 
-      label={props.label}
-      placeholder={props.placeholder}
-      InputLabelProps={{ shrink: true }}
-      InputProps={{
-        endAdornment: editMode ? (
-        <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
-            <SaveIcon
-              color="primary"
-              onClick={handleSaveClick}
+    <ThemeProvider theme={theme}>
+      <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
+        <Grid container alignItems="flex-end">
+          <Box
+            sx={{
+              maxWidth: "1000px",
+              wordBreak: "break-word",
+            }}
+          >
+            <Typography
+              variant="h1"
               sx={{
-                "&:hover": {
-                  color: "#0A6B57",
-                },
-                cursor: "pointer",
-                transition: "color 0.15s ease-in-out",
+                lineHeight: 1,
+                display: "inline",
+                fontSize: "60px",
               }}
-              
-            />
-        </Box>
-
-        ) : (
-          <Box paddingLeft={2}>
-            <EditIcon
-              onClick={handleEditClick}
-              sx={{
-                "&:hover": {
-                  color: "#0b7d66",
-                },
-                cursor: "pointer",
-                transition: "color 0.15s ease-in-out",
-              }}
-            />
+            >
+              {text}
+            </Typography>
           </Box>
-        ),
-        readOnly: !editMode,
-        inputProps: {
-          style: { fontSize: "30px", display: "inline", caretColor: "#0b7d66" },
-        },
-      }}
-      type="text"
-      maxRows={3}
-      fullWidth
-      multiline
-      disabled={!editMode}
-      value={text}
-      onChange={handleTextChange}
-    />
+        </Grid>
+      </Box>
+    </ThemeProvider>
+
+    //
+
+    
   );
 };
 

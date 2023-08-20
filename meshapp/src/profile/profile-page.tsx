@@ -158,39 +158,16 @@ const ProfileHeader = (props: { name: string; pronouns: string }) => {
 /*
   * Profile and Pronouns
 */
-const ProfileN = (props: {
-  profileName: string;
-}) => {
-  
+const ProfileN = (props: { profileName: string;} ) => {
+
   return (
-    <ThemeProvider theme={theme}>
-      <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
-        <Grid container alignItems="flex-end">
-          <Box
-            sx={{
-              maxWidth: "1000px",
-              wordBreak: "break-word",
-            }}
-          >
-       <Typography
-              variant="h1"
-              sx={{
-                bottom: "50px",
-                display: "inline",
-                fontSize: "60px",
-              }}
-            >
+    
       <ProfileNamePronouns  /**Profile-name-text.tsx */
         label={"Profile Name"}
         placeholder={"Your Name"}
         text={props.profileName}
         charLimit={15}
       />
-      </Typography>
-      </Box>
-      </Grid>
-      </Box>
-    </ThemeProvider>
   )
 }
 
