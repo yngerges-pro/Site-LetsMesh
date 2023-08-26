@@ -52,8 +52,9 @@ const ProfilePage = (props: Profile) => {
       <Box className="profile-page-header">
         {/* <ProfileHeader name={props.name} pronouns={props.pronouns} /> */}
         
-        <ProfileN profileName={props.name} />
-        <ProfilePro profilepronoun={props.pronouns} />
+        <ProfileN profileName={props.name}  />
+        <ProfileN profileName={props.pronouns} />
+        {/* <ProfilePro profilepronoun={props.pronouns} /> */}
       
       </Box>
       <Grid container sx={{ borderBottom: 1, borderColor: "#d9d9d9" }}>
@@ -158,34 +159,71 @@ const ProfileHeader = (props: { name: string; pronouns: string }) => {
 /*
   * Profile and Pronouns
 */
-const ProfileN = (props: { profileName: string;} ) => {
+const ProfileN = (props: { profileName: string; } ) => {
 
-  return (
-    
-      <ProfileNamePronouns  /**Profile-name-text.tsx */
-        label={"Profile Name"}
-        placeholder={"Your Name"}
-        text={props.profileName}
-        charLimit={15}
-      />
-  )
-}
-
-const ProfilePro= (props: {
-  profilepronoun: string;
-}) => {
-  
   return (
     <ThemeProvider theme={theme}>
-      <ProfileNamePronouns /**Profile-name-tezt.tsx */
-        label={"Profile Pronoun}"}
-        placeholder={"Your Pronoun"}
-        text={props.profilepronoun}
-        charLimit={7}
-      />
+      <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
+        <Grid container alignItems="flex-end">
+          <Box
+            sx={{
+              maxWidth: "1000px",
+              wordBreak: "break-word",
+            }}
+          >
+            <Typography
+              variant="h1"
+              sx={{
+                lineHeight: 1,
+                display: "inline",
+                fontSize: "60px",
+              }}
+            >
+              <ProfileTextField 
+      label={"Profile Name"}
+      placeholder={"Your Name"}
+      text={props.profileName}
+      charLimit={25}
+    />
+              {/*props.name*/}
+              <Typography
+                variant="h1"
+                sx={{
+                  display: "inline",
+                  fontSize: "30px",
+                }}
+              >
+                {/* {` (${props.pronouns})`} */}
+              </Typography>
+            </Typography>
+          </Box>
+        </Grid>
+      </Box>
     </ThemeProvider>
+      // <ProfileNamePronouns  /**Profile-name-text.tsx */
+      //   label={"Profile Name"}
+      //   placeholder={"Your Name"}
+      //   text={props.profileName}
+      //   charLimit={15}
+      // />
   )
 }
+
+// const ProfilePro= (props: {
+//   profilepronoun: string;
+// }) => {
+  
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <ProfileNamePronouns /**Profile-name-tezt.tsx */
+//         label={"Profile Pronoun}"}
+//         placeholder={"Your Pronoun"}
+//         text={props.profilepronoun}
+//         charLimit={7}
+//       />
+//     </ThemeProvider>
+//   )
+// }
 
 /**
  * Displays the user's current occupation.

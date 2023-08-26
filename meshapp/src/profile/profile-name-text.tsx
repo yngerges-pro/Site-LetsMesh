@@ -7,6 +7,8 @@ import SaveIcon from "@mui/icons-material/Save";
 // New Imports
 import { Typography, Grid, createTheme, ThemeProvider} from "@mui/material";
 
+import ProfileTextBox from "./profile-textfield";
+
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -59,7 +61,7 @@ const ProfileTextField = (props: {
   };
 
   return (
-
+    
     <ThemeProvider theme={theme}>
       <Box sx={{ pl: "40px", display: "flex", alignItems: "flex-end" }}>
         <Grid container alignItems="flex-end">
